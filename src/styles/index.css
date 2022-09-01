@@ -1,0 +1,231 @@
+body {}
+
+.cabecalho {
+    width: 100%;
+    background-color: var(--grey1);
+    height: 75px;
+
+}
+
+.cabecalho__container {
+   
+    width: 100%;
+    max-width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+.cabecalho>.cabecalho__container-logo {}
+
+.cabecalho>.cabecalho__container-logo>img {}
+
+.cabecalho__btns>.cabecalho_btns_login,
+.cabecalho_btns_singUp {
+    width: 53px;
+    height: 32px;
+    background-color: var(--grey2);
+    color: var(--whiteFixed);
+    border-radius: 5px;
+    font-size: var(--text2);
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.cabecalho_btns_singUp {
+    width: 71px;
+    height: 32px;
+    background-color: var(--grey1);
+    border: none;
+    color: var(--whiteFixed);
+}
+
+
+
+
+.darkMode {
+    display: flex;
+    width: 50px;
+    height: 26px;
+    padding: 5px;
+    border-radius: 1rem;
+    position: relative;
+    align-items: center;
+    background-color: var(--grey3);
+    justify-content: space-between;
+    transform: scale(1);
+}
+
+
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    height: 350px;
+    border-radius: 5px;
+    display: flex;
+    background-color: var(--grey4);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem auto;
+    padding: 1rem;
+
+
+}
+
+.container>h1 {
+    /* mudar para 6rem */
+    font-size: 4rem;
+    text-align: center;
+    color: var(--grey1);
+    border-bottom: 1px solid;
+}
+
+.container>p {
+    width: 80%;
+    text-align: center;
+}
+
+.container>.box__btns {}
+
+.container>.box__btns>.main__btn {
+    padding: .6rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--grey1);
+    color: var(--whiteFixed);
+    margin-bottom: 1rem;
+    border: none;
+
+}
+
+.container>.box__btns>.main__btn_variavel {
+    background: var(--grey2);
+}
+
+.container>.box__btns>.main__btn:hover {
+    background-color: var(--grey2);
+}
+
+.container>.box__btns>.main__btn_cadastra:hover {
+    background-color: var(--grey3);
+}
+
+
+
+
+
+/* ======== modal ============ */
+.container__modal {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: showLoginModal 1s;
+    background-color: rgba(76, 77, 77, 0.61);
+}
+
+.modal {
+    width: 90%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 5px;
+    background-color: var(--whiteFixed);
+    padding: 1rem;
+}
+
+.container__modal>.modal>.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    justify-content: center;
+    gap: 1rem;
+}
+.container__modal>.modal>.form input ,button{
+    width: 90%;
+    padding: .6rem;
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid var(--grey4);
+    
+}
+.container__modal>.modal>.form >button {
+    width: 98%;
+    background-color: var(--brand-1);
+    color: var(--whiteFixed);
+
+}
+
+.container__modal>.modal>h2 {
+    margin-bottom: 1rem;
+    font-size: var(--title1);
+}
+
+.container__modal > .modal >p{
+    font-size: var(--text2);
+    margin: 1rem 0;
+    text-align: center;
+}
+.container__modal > .modal > button {
+    width: 98%;
+    background-color: var(--whiteFixed);
+    color: var(--grey1)
+}
+.modal-disappear{
+    animation: closeLoginModal 1s;
+}
+
+@keyframes showLoginModal {
+    0% {
+        opacity: 0;
+        transform:  translate(-30%, -30%);
+    }
+
+    100% {
+        opacity: 1;
+        transform:  translate( 0, 0);
+    }
+
+}
+@keyframes closeLoginModal {
+    0% {
+        opacity: 1;
+        transform:  translate( 0, 0);
+    }
+
+    100% {
+        opacity: 0;
+        transform:  translate(-30%, -30%);
+    }
+
+}
+
+.modal >div {
+    display: flex;
+    margin: 1rem 0;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal >div >h2 {
+    font-size: var(--title1);
+    font-weight: 700;
+    color: var(--grey1);
+}
+.modal >div span{
+    font-size: var(--text2);
+    font-weight: 600;
+    color: var(--grey1);
+    border: 1px solid var(--grey1);
+    padding: 4px 10px;
+
+}
