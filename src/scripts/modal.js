@@ -1,4 +1,5 @@
 
+
 export class CriarModal {
     static body = document.querySelector("body")
 
@@ -12,6 +13,7 @@ export class CriarModal {
 
 
     static loginForm(login) {
+       
         const tagDiv = document.createElement("div")
         tagDiv.classList.add("modal")
 
@@ -39,31 +41,39 @@ export class CriarModal {
         const tagButtonLogar = document.createElement("button")
 
         tagButtonLogar.classList.add("logar")
-        tagButtonLogar.type = "submit"
+        // tagButtonLogar.type = "submit"
         tagButtonLogar.innerText = "Logar"
 
         const tagP = document.createElement("p")
         tagP.innerText = "go to registration"
 
-        const tagButtonRegistrar = document.createElement("button")
+        const tagButtonRegistrar     = document.createElement("button")
         tagButtonRegistrar.classList.add("btnSingup")
-        tagButtonRegistrar.type = "submit"
+        // tagButtonRegistrar.type      = "submit"
         tagButtonRegistrar.innerText = "Don't have a registration yet?"
 
         tagSpan.addEventListener("click", ()=>{
+
             const modal = document.querySelector(".container__modal")
             modal.classList.add("modal-disappear")
             setTimeout(()=>{
                 modal.remove()
+               
             },1400)
         })
 
-        tagButtonLogar.addEventListener("click", (event) => {
-            event.preventDefault()
-        })
+        // tagButtonLogar.addEventListener("click", (event) => {
+        //     event.preventDefault()
+        // })
 
         tagButtonRegistrar.addEventListener("click", (event) => {
             event.preventDefault()
+            const modal = document.querySelector(".container__modal")
+            modal.classList.add("modal-disappear")
+            setTimeout(()=>{
+                modal.remove()
+            },1.400)
+            this.template(this.singupForm())
         })
 
         tagDivVoltar.append(tagH2, tagSpan)
@@ -77,12 +87,12 @@ export class CriarModal {
         const tagDiv = document.createElement("div")
         tagDiv.classList.add("modal")
 
-        const tagDivVoltar = document.createElement("div")
-        const tagH2 = document.createElement("h2")
-        const tagSpan = document.createElement("span")
+        const tagDivVoltar  = document.createElement("div")
+        const tagH2         = document.createElement("h2")
+        const tagSpan       = document.createElement("span")
         tagSpan.classList.add("closeModal")
-        tagH2.innerText = "Sing Up"
-        tagSpan. innerText = "Back"
+        tagH2.innerText     = "Sing Up"
+        tagSpan. innerText  = "Back"
 
         const tagForm = document.createElement("form")
         tagForm.classList.add("form")
@@ -92,6 +102,7 @@ export class CriarModal {
         const tagInputNome = document.createElement("input")
         tagInputNome.classList.add("nomeUser")
         tagInputNome.type = "text"
+        tagInputNome.placeholder = "Digite seu nome"
         tagInputNome.required = true
 
 
@@ -122,18 +133,31 @@ export class CriarModal {
         tagInputImg.required = true
 
         const tagButtonRegistrar = document.createElement("button")
-        tagButtonRegistrar.type = "submit"
+        tagButtonRegistrar.classList.add("register")
+        // tagButtonRegistrar.type = "submit"
         tagButtonRegistrar.innerText = "Registrar"
 
-        tagButtonRegistrar.addEventListener("click", (event) => {
-            event.preventDefault()
-        })
+        //cadastrar
+        
+        // tagButtonRegistrar.addEventListener("click", async (event) => {
+        //     event.preventDefault()
+        //     const data = {
+        //         username:   tagInputNome.value, 
+        //         email:      tagInputEmail.value, 
+        //         password:   tagInputPassword.value, 
+        //         work_at:    tagInputJob.value, 
+        //         image:      tagInputEmail.value
+        //     }
+            
+        //     await Request.sinup(data)
+        // })
+
 
         const tagP = document.createElement("p")
         tagP.innerText = "Already have login?"
 
         const buttonVoltarLogin = document.createElement("p")
-        buttonVoltarLogin.classList.add("btnLogin")
+        buttonVoltarLogin.classList.add("voltarLogin")
         buttonVoltarLogin.type = "submit"
         buttonVoltarLogin.innerText = "go to login page"
 
@@ -143,6 +167,16 @@ export class CriarModal {
             setTimeout(()=>{
                 modal.remove()
             },1400)
+        })
+
+        buttonVoltarLogin.addEventListener("click", (event) => {
+            event.preventDefault()
+            const modal = document.querySelector(".container__modal")
+            modal.classList.add("modal-disappear")
+            setTimeout(()=>{
+                modal.remove()
+            },1.400)
+            this.template(this.loginForm())
         })
 
         tagDivVoltar.append(tagH2, tagSpan)
@@ -155,5 +189,6 @@ export class CriarModal {
         return tagDiv
 
     }
+  
 
 }
