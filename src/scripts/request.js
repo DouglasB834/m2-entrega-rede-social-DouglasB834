@@ -51,7 +51,7 @@ export class Requests {
     }
 
     // pesquisar todos os usuarios na page
-    static async allUsers(users) {
+    static async allUsers() {
         const usuarios = await instance
             .get(`users/${users}`)
             .then(res => (res.data))
@@ -107,9 +107,9 @@ export class Requests {
     }
 
     //para listar todos os POSTS
-    static async listarPosts(page) {
+    static async listarPosts() {
         const posts = await instance
-            .get("?page=", page)
+            .get("?page=1")
             .then(res => {
                 console.log(res.results)
             })
