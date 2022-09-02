@@ -103,6 +103,8 @@ Index.indexRender()
 Index.Showlogin()
 Index.ShowSingup()
 
+// const token = localStorage.getItem("@kenzieRedeSocial:token");
+// console.log(token)
 
 
 
