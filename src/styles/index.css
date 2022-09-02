@@ -131,7 +131,7 @@ body {}
     align-items: center;
     justify-content: center;
     animation: showLoginModal 1s;
-    background-color: rgba(76, 77, 77, 0.61);
+    background-color: var(--boy-bg);
 }
 
 .modal {
@@ -182,7 +182,7 @@ body {}
     color: var(--grey1)
 }
 .modal-disappear{
-    animation: closeLoginModal 1s;
+    animation: closeLoginModal 1.5s;
 }
 
 @keyframes showLoginModal {

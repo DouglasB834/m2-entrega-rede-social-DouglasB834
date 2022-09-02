@@ -18,7 +18,7 @@
     <!-- Axios  -->
     <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Link Config Java Script  -->
-    <script defer type="mmodule" src="src/scripts/index.js"></script>
+    <script defer type="module" src="src/scripts/index.js"></script>
     <!--  icons  -->
     <script src="https://kit.fontawesome.com/f39f42120f.js" crossorigin="anonymous"></script>
     <!-- link Config CSS -->
@@ -29,53 +29,84 @@
 </head>
 
 <body>
-    <header class="header">
-        
+    <header class="cabecalho">
         <div class="cabecalho__container">
 
             <div class="cabecalho__container-logo">
-                <img src="src/assets/TechPosters.png" alt="logo TechPosters">t
+                <img src="src/assets/TechPosters.png" alt="logo TechPosters">
             </div>
-            <div>
-                <button class="login" >Login</button>
-                <button class="singUp" >SingUp</button>
-            </div>   
+            
+            <!-- <div class="darkMode">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+                <i class="fa-solid fa-sun"></i>
+            </div> -->
+
+            <div class="cabecalho__btns">
+                <button class="cabecalho_btns_login btnLogin">Login</button>
+                <button  class="cabecalho_btns_singUp btnSingup">SingUp</button>
+            </div>
 
         </div>
-
     </header>
 
     <main class="container">
-        <section class="container__section">
-            <h2>Login</h2>
-            <form>
-                <input type="email" placeholder="Seu e-mail">
-                <input type="password" placeholder="Sua senha">
-                <button type="submit">Logar</button>
-            </form>
-            <p>Ainda não Possui cadastro</p>
-            <button>ir para página de registro</button>
-        </section>
+        <h1>Tech Posters </h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab, quis?</p>
+        <!-- <div class="box__btns">
+            <button id="btnLogin" class="main__btn Login">Login </button>
+            <button id="btnCadastrar" class="main__btn main__btn_variavel" >Sing up </button>
+        </div> -->
 
-        <section>
-            <div>
-                <h2>cadastro</h2>
-                <span>voltar</span>
+
+        <!-- <section class="container__modal">
+            <div class="modal">
+                <div >
+                    <h2>Login</h2>
+                    <span class="closeModal">Back</span>
+                </div>
+                
+                <form class="form">
+                    <input class="email" type="email" placeholder="Seu e-mail">
+                    <input class="password" type="password" placeholder="Sua senha">
+
+                    <button type="submit">Logar</button>
+
+                </form>
+
+                <p>Don't have a registration yet?</p>
+                <button class="cadastrar">ir para página de registro</button>
+                
             </div>
 
-            <form>
-                <input type="text" name="nome" placeholder="Seu nome" required>
-                <input type="email" name="email" placeholder="Seu e-mail" required>
-                <input type="password" name="password" placeholder="sua Senha" required>
-                <input type="text" name="trabalho" placeholder="Qual seu trabalho" required>
-                <input type="text" name="img" placeholder="URL da Imagem de perfil" required>
-                <button>Registrar</button>
-            </form>
-            <p>Ja possui login?</p>
-            <button>ir para página de login</button>
+        </section> -->
 
+        <!-- <section class="container__modal">
 
-        </section>
+            <div class="modal">
+                <div >
+                    <h2>Sing up</h2>
+                    <span class="closeModal">Back</span>
+                </div>
+                
+                <form class="form">
+                    <input type="text"      name="nome" placeholder="Seu nome" required>
+
+                    <input type="email"     name="email" placeholder="Seu e-mail" required>
+                    <input type="password"  name="password" placeholder="sua Senha" required>
+
+                    <input type="text"      name="trabalho" placeholder="Qual seu trabalho" required>
+
+                    <input type="text"      name="img" placeholder="URL da Imagem de perfil" required>
+                    
+                    <button>Registrar</button>
+
+                </form>
+                <p>Ja possui login?</p>
+                <button>ir para página de login</button>
+                
+            </div>
+
+        </section> -->
 
 
     </main>
