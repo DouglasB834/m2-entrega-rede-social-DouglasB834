@@ -1,7 +1,8 @@
 
 export class ModalPost{
     
-    static chamarModal(modal) {        
+    static chamarModal(modal) {   
+            
         const body = document.querySelector("body") 
         const section = document.createElement("section")
 
@@ -9,11 +10,12 @@ export class ModalPost{
 
         section.append(modal)
         body.append(section)
-        console.log("fn")
+      
+       
     }
 
     static criarModalClick(post){
-      
+        console.log(post)  
         const DivMain           = document.createElement("div")
         const tagDivLi          = document.createElement("div")
         const divBoxImg         = document.createElement("div")
@@ -31,10 +33,12 @@ export class ModalPost{
         tagH3info.classList.add("nome_usuario_h3")
         tagPInfo.classList.add("trabalho")
         tagFechaModal.classList.add("fechaModal")
-        
-        tagImg.src          =  "../assets/Ellipse 1.png"
-        tagH3info.innerText ="Samuel"
-        tagPInfo.innerText  = "vagabundo anonimos"
+        tagImg.classList.add(".imgUsers")
+
+        tagImg.src          = post.author.image
+        tagImg.alt          = post.author.useranme
+        tagH3info.innerText = post.author.useranme
+        tagPInfo.innerText  = post.author.work_at
 
         tagFechaModal.innerText = "x"
 
@@ -54,17 +58,17 @@ export class ModalPost{
         })
  
         //  append Poster
-        const tagDivPoster = document.createElement("div")
-
+        const tagDivPoster      = document.createElement("div")
+        const tagh2Post         = document.createElement("h2")
+        const tagPPost          = document.createElement("p")
+        
         tagDivPoster.classList.add("informacao__do__post")
-        const tagh2Post = document.createElement("h2")
         tagh2Post.classList.add("tituloPost")
-        const tagPPost = document.createElement("p")
         tagPPost.classList.add("textPost")
 
-        tagh2Post.innerText = "Como criar um interface simples e agradável utilizando boas práticas de desig"
+        tagh2Post.innerText     = post.title
+        tagPPost.innerText      = post.description
 
-        tagPPost.innerText = "Hoje vamos conversar sobre como criar uma interface agradável mesmo sem ter um design pronto         feito por um profissional de UI design! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores molestiae iure molestias quod consequatur quis cumque reprehenderit?        Dolores suscipit corporis maxime vero pariatur laboriosam dolore illo, repellendus qui ipsa facilis "
 
 
         

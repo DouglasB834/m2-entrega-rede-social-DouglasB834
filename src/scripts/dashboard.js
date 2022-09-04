@@ -16,17 +16,6 @@ class DashboardRender {
 
     }
 
-    static openPost() {
-        // const btnAbrirPost = document.querySelector(".btnAbrirPost")
-
-        // btnAbrirPost.addEventListener("click", ()=>{
-        //     const newModal = ModalPost.criarModalClick()
-        //     ModalPost.chamarModal(newModal)
-
-
-        // })
-    }
-
     static sairDaPage() {
         const sair = document.querySelector(".sair")
 
@@ -53,6 +42,7 @@ class DashboardRender {
 
 
     }
+
     static NewPost() {
         const form__post = document.querySelector(".form__post")
         const form__text = document.querySelector(".form__text")
@@ -66,8 +56,8 @@ class DashboardRender {
                 description: form__text.value
 
             }
-            form__text.innerText    = ""
-            form__post.innerText    = ""
+            form__text.innerText = ""
+            form__post.innerText = ""
             // Requests.criarNovoPost(objeto)
             btnPostar.style.background = "--brand-2"
             console.log(objeto)
@@ -75,13 +65,28 @@ class DashboardRender {
             // },)
         })
 
+    }
+    static changePage() {
+        let contador = 1
+        const pagina = document.querySelector(".page")
+        const btn1 = document.querySelector(".btn1")
+        btn1.addEventListener("click", () => contador--)
+        const btn2 = document.querySelector(".btn2")
+        btn2.addEventListener("click", () => contador++)
+        console.log(contador)
+        pagina.innerText = contador
 
     }
 
 }
+
+DashboardRender.changePage()
 DashboardRender.meuPerfil()
 DashboardRender.NewPost()
 
+
+
+//FN Dinamicas
 class Postagens {
     static postagens_ul = document.querySelector(".postagens_ul")
 
@@ -89,12 +94,14 @@ class Postagens {
         const postagens_ul = document.querySelector(".postagens_ul")
         const posts = await Requests.listarTodosPosts()
 
+        // console.log(posts)
         posts.forEach(async element => {
-            // console.log(element)
             let renderizarPost = await Postagens.renderPostagens(element)
             postagens_ul.append(renderizarPost)
 
         });
+
+
 
         const ul_sujestoes = document.querySelector(".ul_sujestoes")
         const sujestoes = await Requests.allUsers()
@@ -138,15 +145,11 @@ class Postagens {
         tagbtnSeguir.innerText = "seguir"
         tagbtnSeguir.id = usuario.uuid
 
-        // console.log(usuario.uuid)
-
 
         usuario.followers.forEach(element => {
             let id = element.followers_users_id.uuid
 
             if (id.includes(localStorage.getItem("@kenzieRedeSocial:id"))) {
-                // console.log(usuario.uuid)
-                console.log("entrei")
                 tagbtnSeguir.innerText = "seguindo"
                 tagbtnSeguir.style.background = "var(--brand-1)"
                 tagbtnSeguir.style.color = "var(--whiteFixed)"
@@ -157,11 +160,11 @@ class Postagens {
 
 
         })
-        let primeiroID =  usuario.uuid
-        tagbtnSeguir.addEventListener("click", async() => {
+        let primeiroID = usuario.uuid
+        tagbtnSeguir.addEventListener("click", async () => {
 
             if (tagbtnSeguir.classList.contains("seguindo")) {
-                
+
                 tagbtnSeguir.innerText = "seguir"
                 tagbtnSeguir.style.background = "var(--grey3)"
                 tagbtnSeguir.style.color = "var(--gre1)"
@@ -176,16 +179,10 @@ class Postagens {
                 const objeto = {
                     following_users_uuid: tagbtnSeguir.id
                 }
-               
-                console.log(tagbtnSeguir.id)
-               const iDDoido = await Requests.followUsuario(objeto)
-               console.log(iDDoido)
-               tagbtnSeguir.id = iDDoido.data.uuid
+                const iDDoido = await Requests.followUsuario(objeto)
+                tagbtnSeguir.id = iDDoido.data.uuid
             }
         })
-
-
-
 
         box_btnSeguir.append(tagbtnSeguir)
         tagDivInfoUser.append(tagPNome, tagSpanJob)
@@ -221,7 +218,7 @@ class Postagens {
         tagPtrablho.innerText = author.work_at
         tagNomeEJob.append(tagh3Nome, tagPtrablho)
 
-        tagDivInfoUsuario.append(tagBoxImg,tagNomeEJob)
+        tagDivInfoUsuario.append(tagBoxImg, tagNomeEJob)
 
 
         const tagInfoPost = document.createElement("div")
@@ -240,21 +237,65 @@ class Postagens {
         const tagSpan = document.createElement("span")
         tagBoxCurtidasEBtn.classList.add("box_brnAbrirPost")
 
-        btnAbrirPost.addEventListener("click", () => {
-            const newModal = ModalPost.criarModalClick()
-            ModalPost.chamarModal(newModal)
-        })
 
         btnAbrirPost.classList.add("btnAbrirPost")
         btnAbrirPost.innerText = "Abrir Post"
+        btnAbrirPost.id = post.uuid
+
         tagDivCurtidas.classList.add("box__curtidas")
         tagI.innerHTML = `<i class="fa-solid fa-heart"></i>`
         tagI.classList.add("linked")
         tagSpan.innerText = `${post.likes.length}`
+        tagI.id = post.uuid
 
-        // linked.addEventListener("click", ()=>{
+        console.log(post)
+        // console.log(tagSpan.id)
 
-        // })
+
+
+
+        post.likes.forEach(ids => {
+            console.log()
+            let id = ids.user.uuid
+
+            if (id.includes(localStorage.getItem("@kenzieRedeSocial:id"))) {
+                console.log("cheguei ")
+                tagI.style.color = "red"
+                tagI.classList.add("liked")
+
+            }
+
+        })
+
+        tagI.addEventListener("click", () => {
+
+            if (tagI.classList.contains("liked")) {
+                tagI.classList.remove("liked")
+                tagI.style.color = "var(--grey3)"
+                Requests.noliked(tagI.id)
+                console.log("nao curtindo ")
+
+            } else {
+                console.log("curtindo ")
+                tagI.style.color = "red"
+                const id = {
+                    post_uuid: tagI.id
+                }
+                tagI.classList.add("liked")
+                Requests.liked(id)
+
+            }
+
+        })
+
+        // ABRIR POSTE
+        btnAbrirPost.addEventListener("click", () => {
+            if (btnAbrirPost.id == post.uuid) {
+                const newModal = ModalPost.criarModalClick(post)
+
+                ModalPost.chamarModal(newModal)
+            }
+        })
 
 
         tagDivCurtidas.append(tagI, tagSpan)
@@ -264,10 +305,21 @@ class Postagens {
         return tagLi
 
     }
+
+
 }
+// da346290-2715-4a0d-9d0c-4e5ba37aa5d7 noticias de conviddos 
+
+//330f7635-d063-4bf0-8cdc-7da913a2f591
+// const id = {
+    // post_uuid: "774ec9e6-8bc7-4ff4-a454-59d22c71fb55"
+// }
+
+// Requests.liked(id)
+// Requests.noliked("774ec9e6-8bc7-4ff4-a454-59d22c71fb55")
 
 DashboardRender.sairDaPage()
 Postagens.listaDePostagens()
 
-DashboardRender.openPost()
+// DashboardRender.openPost()
 

@@ -27,6 +27,11 @@
 .modal-disappear{
     animation: closeLoginModal 1.5s;
 }
+.box_imgDiv__postagem > img{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+}
 
 @keyframes showLoginModal {
     0% {
