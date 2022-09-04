@@ -52,7 +52,7 @@ main {
 .sections__container__post>.containe_info {
     display: flex;
     margin: 5.5rem 0 3rem 1.2rem;
-    align-items: center;
+    align-content: center;
 
 
 
@@ -68,27 +68,35 @@ main {
 }
 
 .sections__container__post>.containe_info>.container__div_img img {
-    width: 100%;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
 }
 
 .containe_info>.containe_info_usuario {
     margin-left: 10px;
+    margin-top: 9px;
 }
 
+.seguidores{
+    margin-top: 9px;
+}
 .containe_info>.containe_info_usuario>.title {
     font-size: var(--title2);
     font-weight: 600;
     margin-bottom: 6px;
 }
 
-.containe_info>.containe_info_usuario>.title>span {
+#seguidores {
     font-size: var(--text2);
     font-weight: 400;
     margin-left: 10px;
+    transform: translateY(-50px);
 }
 
 .containe_info>.containe_info_usuario>p {
     font-size: var(--text2);
+   
 }
 
 .containe_info>.containe_info_usuario .trabalho_usuario {}
@@ -156,7 +164,7 @@ main {
     overflow: scroll;
     gap: 1rem;
     margin-bottom: 2rem;
-    -webkit-mask-image: linear-gradient(to right, rgb(0, 0, 0) 1%, transparent);
+    /* -webkit-mask-image: linear-gradient(to right, rgb(0, 0, 0) 1%, transparent); */
 }
 
 .ul_sujestoes li {
@@ -203,10 +211,10 @@ main {
 .box_btnSeguir {}
 
 .box_btnSeguir button {
-    background-color: var(--brand-1);
+    background-color: var(--whiteFixed);
     border: 1px solid var(--grey4);
     padding: .3rem;
-    color: var(--whiteFixed);
+    color: var(--grey2);
 }
 
 /*============ Stilo dos poste ======== */
@@ -241,8 +249,18 @@ main {
     border: 1px solid var(--grey1);
 }
 
-.box_imgDiv__postagem img {
+.box_imgDiv__postagem .imgUsers {
     width: 100%;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.imgUsers{
+    width: 100%;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
 }
 
 .posts__Info__usuario {
@@ -303,6 +321,10 @@ main {
     margin-bottom: 5px;
 
 }
+.informacao__do__post p{
+    /* overflow: hidden;
+    height: 90px; */
+}
 
 
 
@@ -353,26 +375,4 @@ main {
 
 
 
-/* ============ MODAL ============== */
 
-.container__modal {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: showLoginModal 1s;
-    background-color: rgba(128, 128, 128, 0.425);
-}
-
-.modal {
-    width: 90%;
-    max-width: 380px;
-    height: auto;
-    border-radius: 5px;
-    background-color: var(--whiteFixed);
-    padding: 1rem;
-}

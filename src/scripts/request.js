@@ -1,14 +1,15 @@
 import { instance } from "./axios.js";
-import { Index } from "./index.js";
 import { Toast } from "./tost.js";
 
 export class Requests {
+
+    //fazer o login
     static async login(data) {
         const loginUser = await instance
             .post("users/login/", data)
             .then(res => {
-                console.log(res)
                 localStorage.setItem("@kenzieRedeSocial:token", res.data.token)
+                localStorage.setItem("@kenzieRedeSocial:id", res.data.user_uuid)
                 Toast.create("Login realizado com sucesso", "#0be881")
 
                 setTimeout(() => {
@@ -22,12 +23,12 @@ export class Requests {
 
     }
 
+    // fazer o cadastro
     static async singup(data) {
        
         const newRegister = await instance
             .post("users/", data)
             .then(async res => {
-                //logar direito logo depois de cadastra
                 console.log(res.data)
                 console.log(data)
                 Toast.create("Cadastrado com sucesso!!")
@@ -36,6 +37,7 @@ export class Requests {
 
                     
                 // }, 1000)
+
                 const newData = {
                     email: res.data.email,
                     password: data.password
@@ -50,14 +52,26 @@ export class Requests {
         // return newRegister
     }
 
-    // pesquisar todos os usuarios na page
-    static async allUsers() {
-        const usuarios = await instance
-            .get(`users/${users}`)
-            .then(res => (res.data))
+    //para listar todos os POSTS
+    static async listarTodosPosts(page) {
+        const posts = await instance
+            .get(`posts/?limit=10&offset=${page}/`)
+            .then(res => res.data.results)
             .catch(error => {
                 console.log(error)
-                // Toast.create(" FODA SE!","#4263EB;")
+            })
+            
+            return posts
+    }
+
+
+    // pesquisar todos os usuarios na page
+    static async allUsers(users = 1) {
+        const usuarios = await instance
+            .get(`users/?page=${users}`)
+            .then(res => res.data.results)
+            .catch(error => {
+                Toast.create("nao vai listar", "red;")
             })
         return usuarios
     }
@@ -66,30 +80,40 @@ export class Requests {
     //um usuario só
     static async userUuid(userId) {
         const buscarID = await instance
-            .get(`users/${userId}`)
+            .get(`users/${userId}/`)
             .then(res => res.data)
             .catch(error => {
-                Toast.create(" FODA SE!", "#4263EB;")
+                console.log(error)
             })
         return buscarID
     }
 
 
     //seguir usuario
-    static async followUsuario(id) {
+    static async followUsuario(data) {
+
         const seguirUsuario = await instance
-            .post("users/follow/")
+            .post("users/follow/",data)
             .then(res => {
-                console.log(res)
+                Toast.create("Seguindo", "gray")
+               return  res
             })
+            .catch(error => {
+                Toast.create(error, "gray")
+            })
+        
+            return seguirUsuario
     }
 
-    //parar de seguir usuario
+    //parar de seguir usuario         "50f42dfd-c1d3-4757-85ae-c6fe584f3c7d"
     static async unfollow(id) {
         const seguirUsuario = await instance
-            .delete("users/follow/", id)
+            .delete(`users/unfollow/${id}/`)
             .then(res => {
-                console.log(res)
+                Toast.create("Unfllow", "gray")
+            })
+            .catch(error => {
+                Toast.create(error.response.data.following_users_uuid +" delete", "red")
             })
     }
 
@@ -98,7 +122,7 @@ export class Requests {
         const NovoPost = await instance
             .post("posts/", body)
             .then(res => {
-                Toast.create(`Filme cadastrado com Sucesso`, "gray")
+                Toast.create(`Postado com sucesso `, "gray")
             })
             .catch(error => {
                 Toast.create(" haaaa!", "#4263EB;")
@@ -106,17 +130,11 @@ export class Requests {
         return NovoPost
     }
 
-    //para listar todos os POSTS
-    static async listarPosts() {
-        const posts = await instance
-            .get("?page=1")
-            .then(res => {
-                console.log(res.results)
-            })
-            .then(res => {
-                console.log(res)
-            })
-    }
+
+
+
+
+
 
 
 }

@@ -18,5 +18,5 @@ export const instance = axios.create({
     baseURL: "https://m2-rede-social.herokuapp.com/api/",
     headers: Headers
 })
-
+// instance.defaults.headers.common['Authorization'] = token;
 
