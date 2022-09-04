@@ -52,7 +52,7 @@ main {
 .sections__container__post>.containe_info {
     display: flex;
     margin: 5.5rem 0 3rem 1.2rem;
-    align-items: center;
+    align-content: center;
 
 
 
@@ -68,11 +68,18 @@ main {
 }
 
 .sections__container__post>.containe_info>.container__div_img img {
-    width: 100%;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
 }
 
 .containe_info>.containe_info_usuario {
     margin-left: 10px;
+    margin-top: 9px;
+}
+
+.seguidores {
+    margin-top: 9px;
 }
 
 .containe_info>.containe_info_usuario>.title {
@@ -81,14 +88,16 @@ main {
     margin-bottom: 6px;
 }
 
-.containe_info>.containe_info_usuario>.title>span {
+#seguidores {
     font-size: var(--text2);
     font-weight: 400;
     margin-left: 10px;
+    transform: translateY(-50px);
 }
 
 .containe_info>.containe_info_usuario>p {
     font-size: var(--text2);
+
 }
 
 .containe_info>.containe_info_usuario .trabalho_usuario {}
@@ -97,7 +106,7 @@ main {
 /* Stilo poster */
 .container__postar-post {
     display: flex;
-    margin: 0 auto; 
+    margin: 0 auto;
     /* max-width: 713px;  */
     justify-content: center;
 }
@@ -156,7 +165,7 @@ main {
     overflow: scroll;
     gap: 1rem;
     margin-bottom: 2rem;
-    -webkit-mask-image: linear-gradient(to right, rgb(0, 0, 0) 1%, transparent);
+    /* -webkit-mask-image: linear-gradient(to right, rgb(0, 0, 0) 1%, transparent); */
 }
 
 .ul_sujestoes li {
@@ -203,17 +212,17 @@ main {
 .box_btnSeguir {}
 
 .box_btnSeguir button {
-    background-color: var(--brand-1);
+    background-color: var(--whiteFixed);
     border: 1px solid var(--grey4);
     padding: .3rem;
-    color: var(--whiteFixed);
+    color: var(--grey2);
 }
 
 /*============ Stilo dos poste ======== */
 
 .container__postagens {
     width: 90%;
-    margin: 0 ;
+    margin: 0;
 }
 
 .container__postagens>h2 {
@@ -241,8 +250,19 @@ main {
     border: 1px solid var(--grey1);
 }
 
-.box_imgDiv__postagem img {
+.box_imgDiv__postagem .imgUsers {
     width: 100%;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.imgUsers {
+    width: 100%;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
 }
 
 .posts__Info__usuario {
@@ -282,9 +302,7 @@ main {
     margin-left: 2rem;
 }
 
-.box__curtidas i {
-   color: var(--grey3);
-}
+/* .box__curtidas i {} */
 
 .box__curtidas span {
     width: 20px;
@@ -295,7 +313,7 @@ main {
     max-width: 100%;
 }
 
-.informacao__do__post h2{
+.informacao__do__post h2 {
 
     font-weight: 700;
     font-size: var(--text1);
@@ -304,75 +322,54 @@ main {
 
 }
 
-
-
-@media (min-width:769px){
-     
-.container__postagens {
-    max-width: 713px;
-    width: 731px;
-    justify-content: flex-start;
-}
-
-.container__postar-post {
-    max-width: 713px;
-    width: 731px;
-    justify-content: flex-start;
-}
-
-.form{
-    max-width: 731px;
-}
-
-.sections__container__post {
-    max-width: 89%;
-}
-
-.sections_postar {
-    max-width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    gap: 1rem;
-    height: 600px;
-}
-.ul_sujestoes {
-    margin-top: 1rem;
-    position: sticky;
-    width: 100%;
-    display: flex;
-    overflow: scroll;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    -webkit-mask-image: linear-gradient(to right, rgb(0, 0, 0) 1%, transparent);
-    flex-direction: column;
-}
-
+.informacao__do__post p {
+    /* overflow: hidden;
+    height: 90px; */
 }
 
 
 
+@media (min-width:902px) {
 
-/* ============ MODAL ============== */
+    .container__postagens {
+        max-width: 713px;
+        width: 731px;
+        justify-content: flex-start;
+    }
 
-.container__modal {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: showLoginModal 1s;
-    background-color: rgba(128, 128, 128, 0.425);
-}
+    .container__postar-post {
+        max-width: 713px;
+        width: 731px;
+        justify-content: flex-start;
+    }
 
-.modal {
-    width: 90%;
-    max-width: 380px;
-    height: auto;
-    border-radius: 5px;
-    background-color: var(--whiteFixed);
-    padding: 1rem;
+    .form {
+        max-width: 731px;
+    }
+
+    .sections__container__post {
+        max-width: 89%;
+    }
+
+    .sections_postar {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        gap: 1rem;
+        height: 600px;
+    }
+
+    .ul_sujestoes {
+        margin-top: 1rem;
+        position: sticky;
+        width: 100%;
+        display: flex;
+        overflow: scroll;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        -webkit-mask-image: linear-gradient(to right, rgb(0, 0, 0) 1%, transparent);
+        flex-direction: column;
+    }
+
 }
