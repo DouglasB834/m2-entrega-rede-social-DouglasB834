@@ -248,15 +248,9 @@ class Postagens {
         tagSpan.innerText = `${post.likes.length}`
         tagI.id = post.uuid
 
-        console.log(post)
-        // console.log(tagSpan.id)
-
-
-
-
         post.likes.forEach(ids => {
-            console.log()
             let id = ids.user.uuid
+           
 
             if (id.includes(localStorage.getItem("@kenzieRedeSocial:id"))) {
                 console.log("cheguei ")
@@ -268,12 +262,20 @@ class Postagens {
         })
 
         tagI.addEventListener("click", () => {
+          
 
             if (tagI.classList.contains("liked")) {
+                const like =  post.likes.filter(ids =>{
+                    let id = ids.user.uuid
+                    return id.includes(localStorage.getItem("@kenzieRedeSocial:id"))
+                })
+
                 tagI.classList.remove("liked")
                 tagI.style.color = "var(--grey3)"
-                Requests.noliked(tagI.id)
+                Requests.noliked(like[0].uuid)
                 console.log("nao curtindo ")
+                tagSpan.innerText = `${post.likes.length -1}`
+               
 
             } else {
                 console.log("curtindo ")
@@ -283,6 +285,7 @@ class Postagens {
                 }
                 tagI.classList.add("liked")
                 Requests.liked(id)
+                tagSpan.innerText = `${post.likes.length+1}`
 
             }
 

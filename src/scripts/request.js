@@ -145,7 +145,7 @@ export class Requests {
     //tirar like
     static async noliked(id) {
         const desLiked = await instance
-            .delete(`/likes/${id}`)
+        .delete(`/likes/${id}/`)
             .then(res => {
                 Toast.create("desliked")
             })
@@ -155,14 +155,5 @@ export class Requests {
 
         return desLiked
     }
-
-
-    // static async noliked(id) {
-    //     const clickDesLiked = await instance
-    //         .delete(`/likes/${id}`)
-    //         .then(res => Toast.create("Deslke", "blue"))
-    //         .catch(error => Toast.create(error, "gray"))
-    //     return clickDesLiked
-    // }
 
 }

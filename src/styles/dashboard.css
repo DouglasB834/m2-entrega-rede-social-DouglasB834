@@ -332,8 +332,8 @@ main {
 @media (min-width:902px) {
 
     .container__postagens {
-        max-width: 713px;
-        width: 731px;
+        max-width: 958px;
+        width: 863px;
         justify-content: flex-start;
     }
 
@@ -370,6 +370,8 @@ main {
         margin-bottom: 2rem;
         -webkit-mask-image: linear-gradient(to right, rgb(0, 0, 0) 1%, transparent);
         flex-direction: column;
+        height: 434px;
     }
+
 
 }
